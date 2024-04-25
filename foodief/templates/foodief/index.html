@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title_content %}
+    FoodieFinder
+{% endblock %}
+
+{% block body_content %}
+    <main class="h-screen w-screen overflow-x-hidden relative justify-center items-center">
+        <header class="classic w-full py-6 flex justify-around hidden md:flex items-center text-white">
+
+            <ul class="flex items-center justify-center">
+                <li class="font-bold mx-4 ">
+                    <a  href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="font-bold mx-4 ">
+                    <a  href="/#contact">Contact us</a>
+                </li>
+                <li class="font-bold mx-4 ">
+                    <a  href="#">About us</a>
+                </li>
+            </ul>
+            <div id="dropdown-lang" class="switch_lang_btn dropdown relative flex flex-col  text-black  ml-8">
+                <button id="switch_lang_btn" class="dropbtn  flex items-center justify-around min-w-[50px] bg-white px-4 py-2 rounded-full font-semibold shadow-xl" id="selectbtn">
+                    <span class="switch_lang_text">Choose a language</span>
+                <i class="fa-solid fa-chevron-down ml-2"></i>
+                    </button>
+                <div class="dropdown-content  absolute top-10 w-full transition duration-700 flex-col bg-white h-0 overflow-hidden rounded-lg font-semibold  shadow-xl hidden">
+                    <button id="lang-en" href="dropdown-element" class="flex justify-start items-center px-2 py-2 transition duration-700 hover:bg-blue-400 hover:text-white">
+                        <!-- <i class="mr-4 fa-regular fa-calendar"></i> -->
+                        <svg aria-hidden="true" class="h-3.5 w-3.5  me-2" xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us" viewBox="0 0 512 512"><g fill-rule="evenodd"><g stroke-width="1pt"><path fill="#bd3d44" d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"/><path fill="#fff" d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"/></g><path fill="#192f5d" d="M0 0h98.8v70H0z" transform="scale(3.9385)"/><path fill="#fff" d="M8.2 3l1 2.8H12L9.7 7.5l.9 2.7-2.4-1.7L6 10.2l.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7L74 8.5l-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 7.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 24.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 21.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 38.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 35.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 52.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 49.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 66.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 63.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9z" transform="scale(3.9385)"/></g></svg>              
+                        En(Usa)
+                    </button>
+                    <button id="lang-fr" href="dropdown-element" class="flex justify-start items-center px-2 py-2 transition duration-700 hover:bg-blue-400 hover:text-white">
+                        <svg aria-hidden="true" class="h-3.5 w-3.5  me-2"  viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet"><path fill="#ED2939" d="M36 27a4 4 0 0 1-4 4h-8V5h8a4 4 0 0 1 4 4v18z"></path><path fill="#002495" d="M4 5a4 4 0 0 0-4 4v18a4 4 0 0 0 4 4h8V5H4z"></path><path fill="#EEE" d="M12 5h12v26H12z"></path></svg>
+                        Fr(Fr)
+                    </button>
+                </div>
+            </div>
+            <ul class="flex  items-center justify-center">
+                <li>
+                    <a class="font-bold mx-4" href="{% url 'user.signup' %}">Sign up</a>
+                    <a class="font-bold mx-4" href="{% url 'user.login' %}">Sign in</a>
+                </li>
+            </ul>
+        
+        </header>
+        <header id="header-side" class="mobile w-[90%] sm:w-2/3 flex space-y-8 font-serif translate-x-full absolute top-0 right-0 h-full flex-col items-start pt-12 justify-start md:hidden transition duration-700">
+            <h1 class="bg-black text-orange-500 text-4xl mt-2 p-2 font-bold"><span class="text-white">Foodie</span>Finder</h1>
+            <ul class="flex flex-col text-xl justify-center">
+                <li class="font-bold mx-4 ">
+                    <a  href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="font-bold mx-4 ">
+                    <a  href="{% url 'index' %}#contact">Contact us</a>
+                </li>
+                <li class="font-bold mx-4 ">
+                    <a  href="#">About us</a>
+                </li>
+            </ul>
+            <ul class="flex flex-col text-xl items-center justify-center">
+                <li><a class="font-bold mx-4" href="{% url 'user.signup' %}">Sign Up</a></li>
+                <li><a class="font-bold mx-4" href="{% url 'user.login' %}">Sign In</a></li>
+            
+            </ul>
+
+            <div id="dropdown-lang-mobile" class="dropdown relative flex flex-col text-black ml-8">
+                <button id="switch_lang_btn_mobile" class="switch_lang_btn dropbtn flex items-center justify-around min-w-[50px] bg-orange-400 hover:bg-orange-700 text-white px-4 py-2 rounded-full font-semibold shadow-gray-600  shadow-xl" id="selectbtn">
+                    <span class="switch_lang_text">Choose a language</span>
+                <i class="fa-solid fa-chevron-down ml-2"></i>
+                    </button>
+                <div class="dropdown-content mobile  absolute top-10 w-full transition duration-700 flex-col bg-orange-400 h-0 overflow-hidden rounded-lg font-semibold shadow-gray-600 drop-shadow-2xl shadow-2xl hidden">
+                    <button id="lang-en" href="dropdown-element" class="flex justify-start items-center px-2 py-2 transition duration-700 hover:bg-blue-400 hover:text-white">
+                        <!-- <i class="mr-4 fa-regular fa-calendar"></i> -->
+                        <svg aria-hidden="true" class="h-3.5 w-3.5  me-2" xmlns="http://www.w3.org/2000/svg" id="flag-icon-css-us" viewBox="0 0 512 512"><g fill-rule="evenodd"><g stroke-width="1pt"><path fill="#bd3d44" d="M0 0h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"/><path fill="#fff" d="M0 10h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0zm0 20h247v10H0z" transform="scale(3.9385)"/></g><path fill="#192f5d" d="M0 0h98.8v70H0z" transform="scale(3.9385)"/><path fill="#fff" d="M8.2 3l1 2.8H12L9.7 7.5l.9 2.7-2.4-1.7L6 10.2l.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7L74 8.5l-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 7.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 24.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 21.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 38.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 35.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 52.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 49.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm-74.1 7l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7H65zm16.4 0l1 2.8H86l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm-74 7l.8 2.8h3l-2.4 1.7.9 2.7-2.4-1.7L6 66.2l.9-2.7-2.4-1.7h3zm16.4 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8H45l-2.4 1.7 1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9zm16.4 0l1 2.8h2.8l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h3zm16.5 0l.9 2.8h2.9l-2.3 1.7.9 2.7-2.4-1.7-2.3 1.7.9-2.7-2.4-1.7h2.9zm16.5 0l.9 2.8h2.9L92 63.5l1 2.7-2.4-1.7-2.4 1.7 1-2.7-2.4-1.7h2.9z" transform="scale(3.9385)"/></g></svg>              
+                        En(Usa)
+                    </button>
+                    <button id="lang-fr" href="dropdown-element" class="flex justify-start items-center px-2 py-2 transition duration-700 hover:bg-blue-400 hover:text-white">
+                        <svg aria-hidden="true" class="h-3.5 w-3.5  me-2"  viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet"><path fill="#ED2939" d="M36 27a4 4 0 0 1-4 4h-8V5h8a4 4 0 0 1 4 4v18z"></path><path fill="#002495" d="M4 5a4 4 0 0 0-4 4v18a4 4 0 0 0 4 4h8V5H4z"></path><path fill="#EEE" d="M12 5h12v26H12z"></path></svg>
+                        Fr(Fr)
+                    </button>
+                </div>
+            </div>
+        </header>
+        <button class="hamburger menu-btn-side absolute md:hidden right-10 top-8" id="menu-btn-side">
+            <span class="hamburger-top"></span>
+            <span class="hamburger-middle"></span>
+            <span class="hamburger-bottom"></span>
+        </button>
+
+        <section class="hero-section flex w-full flex-col items-center pt-40 md:pt-8  my-auto">
+            <h1 class="text-orange-500 text-6xl font-bold"><span class="text-white">Foodie</span>Finder</h1>
+            <h3 class="text-white">Feeling hungry? let's command</h3>
+            <p class="hero-text">Discover Divine Taste of Cameroonian Food</p>
+            <button class="bg-orange-400 text-white font-bold px-6 py-4 hover:bg-orange-800 transition duration-700"><a href="{% url 'user.login' %}">Log in</a></button>
+        </section>
+    </main>
+    <section id="most-liked" class="most-liked flex overflow-x-auto flex-col items-center w-full px-8">
+        <h1 class="text-2xl text-orange-500 my-4"><span class="text-6xl">What</span> our clients like <span class="font-bold">the most</span></h1>
+                            
+        <div id="food-carousel" class="food-caroussel px-4 py-8 space-x-4  w-[80%] flex w-full justify-center space-x-2" data-carousel="slide" id="product-caroussel">
+            <!-- TARO SAUCE JAUNE -->
+            <article class="flex max-w-80 min-w-80 flex-col p-4 items-center shadow-gray-400 shadow-xl">
+                <img src="{% static 'images/taro_sauce_jaune.jpg' %}" alt="Taro sauce jaune">
+                <h3 class="title text-slate-600">Taro sauce jaune (Bamenda)</h3>
+                <div class="stars-block flex text-yellow-500 items-center space-x-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa fa-star-half"></i>
+                </div>
+            </article>
+            <!-- KOKI PLANTAIN MUR -->
+            <article class="flex max-w-80 min-w-80 flex-col p-4 items-center shadow-gray-400 shadow-xl">
+                <img src="{% static 'images/koki_plantain_mur.jpg' %}" alt="koki plantain mur">
+                <h3 class="title text-slate-600">Koki et plantain mur (Ouest)</h3>
+                <div class="stars-block flex text-yellow-500 items-center space-x-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa fa-star-half"></i>
+                </div>
+            </article>
+            <!-- WATAFUFU AND ERU -->
+            <article class="flex max-w-80 min-w-80 flex-col p-4 items-center shadow-gray-400 shadow-xl">
+                <img src="{% static 'images/watafufu-eru.jpg' %}" alt="watafufu and eru">
+                <h3 class="title text-slate-600">Watafufu and eru (Ouest)</h3>
+                <div class="stars-block flex text-yellow-500 items-center space-x-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa fa-star-half"></i>
+                </div>
+            </article>
+            <!-- NDOLE PLANTAIN MUR -->
+            <article class="flex max-w-80 min-w-80 flex-col p-4 items-center shadow-gray-400 shadow-xl">
+                <img src="{% static 'images/ndole_plantain.jpeg' %}" alt="Ndole et plantain mur">
+                <h3 class="title text-slate-600">Ndole et plantain mur (Ouest)</h3>
+                <div class="stars-block flex text-yellow-500 items-center space-x-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa fa-star-half"></i>
+                </div>
+            </article>
+            <!-- POISSON BRAISE -->
+            <article class="flex max-w-80 min-w-80 flex-col p-4 items-center shadow-gray-400 shadow-xl">
+                <img src="{% static 'images/poisson_braise.jpeg' %}" alt="poisson braisé">
+                <h3 class="title text-slate-600">Posson braisé</h3>
+                <div class="stars-block flex text-yellow-500 items-center space-x-2">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa fa-star-half"></i>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="why-choose-us flex flex-col items-center w-full px-8">
+        <h1 class="text-2xl text-orange-500 my-4"><span class="text-6xl">Why</span> choose <span class="font-bold">FoodieFinder ?</span></h1>
+        <article class="best-restaurant my-4 min-h-[250px] py-6 px-8 flex items-start flex-col md:flex-row shadow-gray-400 shadow-xl hover:shadow-gray-600 transition duration-700">
+            <img src="{% static 'images/restaurant.jpg' %}" class="h-full w-full sm:h-1/2 sm:w-1/2" alt="">
+            <div class="about-reason px-6 flex flex-col h-full items-start justify-left">
+                <h1 class="text-orange-500 text-xl font-bold">We always choose the best restaurant !</h1>
+                <p class="text-slate-800">
+                    At foodieFinder, we suggest you the best restaurants based on other clients 
+                    advices and where you live. <span class="font-bold">You choose where you eat</span>
+                </p>
+            </div>
+        </article>
+        <article class="best-restaurant my-4 min-h-[250px] py-6 px-8 flex items-start flex-col  md:flex-row-reverse shadow-gray-400 shadow-xl hover:shadow-gray-600 transition duration-700">
+            <img src="{% static 'images/restaurant.jpg' %}" class="h-full w-full sm:h-1/2 sm:w-1/2" alt="">
+            <div class="about-reason px-6 flex flex-col h-full items-start justify-left">
+                <h1 class="text-orange-500 text-xl font-bold">We always choose the best chef !</h1>
+                <p class="text-slate-800">
+                    The best food <span class="font-bold">You choose what you eat</span>
+                </p>
+            </div>
+        </article>
+        <article class="best-restaurant my-4 min-h-[250px] py-6 px-8 flex items-start flex-col md:flex-row shadow-gray-400 shadow-xl hover:shadow-gray-600 transition duration-700">
+            <img src="{% static 'images/common/fast_icon.png' %}" class="h-full w-full sm:h-1/2 sm:w-1/2" alt="">
+            <div class="about-reason px-6 flex flex-col h-full items-start justify-left">
+                <h1 class="text-orange-500 text-xl font-bold">Fast delivery</h1>
+                <p class="text-slate-800">
+                    The restaurant we have partnarship guarantee you a fastest delivery service <span class="font-bold">You choose when you eat</span>
+                </p>
+            </div>
+        </article>
+        <article class="best-restaurant my-4 min-h-[250px] py-6 px-8 flex items-start flex-col md:flex-row-reverse shadow-gray-400 shadow-xl hover:shadow-gray-600 transition duration-700">
+            <img src="{% static 'images/restaurant.jpg' %}" class="h-full w-full sm:h-1/2 sm:w-1/2" alt="">
+            <div class="about-reason px-6 flex flex-col h-full items-start justify-left">
+                <h1 class="text-orange-500 text-xl font-bold">We always choose the best chef !</h1>
+                <p class="text-slate-800">
+                    At foodieFinder, we suggest you the best restaurants based on other clients 
+                    advices. <span class="font-bold">You choose what you eat</span>
+                </p>
+            </div>
+        </article>
+    </section>
+    <section id="contact" class="contact-us w-full flex flex-col items-center justify-center">
+        <form action="" class="my-8 space-y-6 flex flex-col bg-orange-200 w-full sm:w-2/3 py-4 px-6 items-center shadow-gray-400 shadow-xl hover:shadow-slate-900 transition duration-700">
+            <p class="bg-orange-400 px-6 py-4 text-white font-bold">Have a suggestion, encourter a problem  ? fill and contact us....</p>
+            <!-- USER EMAIL -->
+
+            <div class="sm:w-2/3">
+                <!-- <label for="fullname">Your fullname here </label> -->
+                <input type="text" name="fullname" id="fullname" placeholder="Enter your fullname" class="pl-4 bg-transparent border-b-2 border-white w-full h-8 text-slate-800">
+            </div>
+            <!-- USER EMAIL -->
+            <div class="sm:w-2/3">
+                <!-- <label for="email">Your fullname here </label> -->
+                <input type="email" name="email" id="email" placeholder="Enter your email" class="pl-4 bg-transparent border-b-2 border-white w-full h-8 text-slate-800">
+            </div>
+            <textarea name="content" class="w-2/3 sm:w-2/3 pl-4 text-slate-800" id="content" cols="40" rows="10">
+                How can we help you 
+            </textarea>
+            <button type="submit" class="bg-orange-400 text-white font-bold px-6 py-4 hover:bg-orange-800 transition duration-700">Soumettre</button>
+        </form>
+    </section>
+
+
+    <footer class="w-full bg-[#433e3d] py-4 px-6 flex flex-col font-serif">
+        <section class="footer-content gap-y-4 sm:gap-y-0 w-full bg-blue-400 py-8 flex justify-around items-start sm:items-center">
+            <section class="newsletter flex flex-col space-y-2">
+                <h2 class="font-bold flex items-center text-3xl text-white">Suscribe <span class="text-sm">Get the latest update and offers</span></h2>
+                <form action="" class="flex space-x-2">
+                    <input type="email" name="email" placeholder="Email" class="font-bold h-10 px-6 py-4 sm:min-w-80 sm:min-w-[300px] uppercase rounded-full">
+                    <button type="submit" class="bg-orange-400 text-white font-bold h-10 flex items-center justify-center px-6 uppercase rounded-full hover:bg-orange-700 transition duration-700">Suscribe</button>
+                </form>
+            </section>
+            <section class="follow-us flex flex-col space-y-2">
+                <h2 class="font-bold text-3xl text-white">Follow us</h2>
+                <ul class="flex space-x-2"> 
+                    <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-facebook-f"></i></a></li>
+                    <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-instagram"></i></li>
+                    <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-x-twitter"></i></li>
+                    <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-google-plus-g"></i></li>
+                </ul>
+            </section>
+            <section class="contact-us-footer flex flex-col space-y-2">
+                <h2 class="font-bold text-3xl text-white">Contact us</h2>
+                <div class="content text-slate-700 font-bold">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>(237) 651858890</span>
+                </div>
+            </section>
+        </section>
+        <section class="copyright w-full font-bold text-center text-white mt-4 border-t-4 py-4 ">
+            Copyright © 2024 FoodieFinder - Nelson Tiagho,  All rights reserved
+        </section>
+    </footer>
+
+
+
+    <script src="{% static 'js/script.js' %}"></script>     
+{% endblock %}
