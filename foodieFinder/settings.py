@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-cej8nmy$yz^r+yiwxb4&l76302_#flzv#p2@4r#wlvb!_mv#bb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.145.16','0.0.0.0']
+# ALLOWED_HOSTS = ['192.168.145.16','0.0.0.0']
+ALLOWED_HOSTS = ["*"]
 
 
 
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'restaurants',
     'reviews',
     'users',
-    'foodief',
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 # AUTH_USER_MODEL = "accounts.Customer"
+
+
+AUTH_USER_MODEL = 'users.User'
+
