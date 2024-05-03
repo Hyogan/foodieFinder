@@ -3,4 +3,4 @@ from django.shortcuts import render
 # Create your views here.
 
 def index(request) :
-    return render(request,'foodief/index.html')
+    return render(request,'restaurants/index.html')

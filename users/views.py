@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from users.forms import UserRegisterForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from restaurants.models import Restaurant
 # Create your views here.
 
 
@@ -68,3 +70,35 @@ def authenticate_view(request) :
 def logout_user(request) :
     logout(request)
     return redirect('index')
+
+
+
+
+
+# restaurants/views.py
+
+
+# @login_required
+# def add_admin(request, restaurant_id):
+#     restaurant = get_object_or_404(Restaurant, pk=restaurant_id)
+#     # Check if the logged-in user is an admin of this restaurant
+#     if request.user in restaurant.admins.all():
+#         if request.method == 'POST':
+#             email = request.POST.get('email')
+#             # Check if the email belongs to an existing user
+#             existing_user = User.objects.filter(email=email).first()
+#             if existing_user:
+#                 # Link existing user to the restaurant as admin
+#                 restaurant.admins.add(existing_user)
+#             else:
+#                 # Create a new user account and link to the restaurant as admin
+#                 new_user = User.objects.create_user(email=email, username=email)
+#                 restaurant.admins.add(new_user)
+#                 # Optionally, send an email invitation to the new user
+#             return redirect('restaurant_detail', restaurant_id=restaurant.id)
+#         else:
+#             # Render the form to add a new admin
+#             return render(request, 'add_admin.html', {'restaurant': restaurant})
+#     else:
+#         # If the logged-in user is not an admin of this restaurant, redirect or show an error message
+#         return redirect('restaurant_detail', restaurant_id=restaurant.id)  # Redirect to restaurant detail page

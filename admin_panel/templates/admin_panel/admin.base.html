@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_content %}
+    <title>
+        FoodieFinder
+    </title> 
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin Panel</title>
+{% endblock %}
+
+{% block body_content %}
+    {% include 'admin_panel/partials/sidebar.html' %}
+    <main class="w-full md:w-[calc(100%-256px)] md:ml-64 bg-gray-200 min-h-screen transition-all main">
+        {% block  admin_page %}
+        {% endblock %}
+      <!-- End Content -->
+    
+    </main>
+    <script src="{% static 'js/admin.js' %}"></script> 
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+ 
+
+{% endblock %}

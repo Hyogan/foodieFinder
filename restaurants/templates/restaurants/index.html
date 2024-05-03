@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_content %}
+    <title>
+        FoodieFinder
+    </title> 
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+{% endblock %}
+
+{% block body_content %}
+{% include 'restaurants/partials/header.html' %}
+    <main class="w-[90vw] mx-auto  justify-center items-center">
+        <div class="cooking_style flex w-[80%] my-4 self-center items-center justify-center mx-auto">
+            <article class="flex mx-2 items-center flex-col">
+                <img src="{% static 'images/food_style/FastFood.png' %}" class="w-14" alt="Fast food">
+                <!-- <img src="../../../core/static/images//food_style/FastFoo.png" alt=""> -->
+                <span>Fast Food</span>
+            </article>
+            <article class="flex mx-2 items-center flex-col">
+                <img src="{% static 'images/food_style/FastFood.png' %}" class="w-14" alt="Fast food">
+                <!-- <img src="../../../core/static/images//food_style/FastFoo.png" alt=""> -->
+                <span>Fast Food</span>
+            </article>
+            <article class="flex mx-2 items-center flex-col">
+                <img src="{% static 'images/food_style/FastFood.png' %}" class="w-14" alt="Fast food">
+                <!-- <img src="../../../core/static/images//food_style/FastFoo.png" alt=""> -->
+                <span>Fast Food</span>
+            </article>
+            <article class="flex mx-2 items-center flex-col">
+                <img src="{% static 'images/food_style/FastFood.png' %}" class="w-14" alt="Fast food">
+                <!-- <img src="../../../core/static/images//food_style/FastFoo.png" alt=""> -->
+                <span>Fast Food</span>
+            </article>
+            <article class="flex mx-2 items-center flex-col">
+                <img src="{% static 'images/food_style/FastFood.png' %}" class="w-14" alt="Fast food">
+                <!-- <img src="../../../core/static/images//food_style/FastFoo.png" alt=""> -->
+                <span>Fast Food</span>
+            </article>
+            <article class="flex mx-2 items-center flex-col">
+                <img src="{% static 'images/food_style/FastFood.png' %}" class="w-14" alt="Fast food">
+                <!-- <img src="../../../core/static/images//food_style/FastFoo.png" alt=""> -->
+                <span>Fast Food</span>
+            </article>
+            <article class="flex mx-2 items-center flex-col">
+                <img src="{% static 'images/food_style/FastFood.png' %}" class="w-14" alt="Fast food">
+                <!-- <img src="../../../core/static/images//food_style/FastFoo.png" alt=""> -->
+                <span>Fast Food</span>
+            </article>
+        </div>
+        <section class="hero-section sm:min-h-[60vh] w-full flex w-full flex-col px-4 items-center justify-center pt-20 sm:flex-row md:pt-8">
+            <div class="flex flex-col space-y-2 items-start justify-start sm:max-w-[50%]">
+                <p class="intro font-bold text-left" style="font-size: calc(16px + 4vh)">
+                    <!-- Une envie subite ? Régalez-vous de suite. -->
+                    A sudden desire ? Enjoy yourself straight away
+                </p>
+                <p class="intro-message font-semibold">Look for a restaurant, a cooking style or a meal</p>
+            </div>
+            <div class="flex min-w-80 rounded-t-3xl min-h-40 relative">
+                <img src="{% static 'images/taro_sauce_jaune.jpg' %}" class=" absolute top-0 left-0  rounded-t-3xl w-full h-full" alt="Taro sauce jaune">
+                <div class="shadow-block w-full h-full bg-gradient-to-r opacity-60 from-slate-200 via-slate-400 to-slate-950 absolute top-0 left-0"></div>
+                <button class="order-now z-10 flex text-center items-center  absolute left-2 bottom-4 bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black transition duration-700">Order now <i class="fa-solid fa-arrow-right pl-2"></i> </button>
+            </div>
+        </section>
+            {% include "restaurants/partials/most-liked-food.html" %} 
+         
+        
+    </main>
+    
+
+
+
+
+
+
+
+    <script src="{% static 'js/script.js' %}"></script>     
+{% endblock %}

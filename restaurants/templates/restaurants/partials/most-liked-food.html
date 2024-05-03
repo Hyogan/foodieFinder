@@ -1,0 +1,72 @@
+{% load static %}
+<section id="most-liked-food" class="most-liked-food flex flex-col items-center w-full px-8">
+    <div class="title-scroll-arrows flex items-center  justify-between px-4 w-full  bg-orange-500 my-400">
+        <h1 class="text-2xl  text-white font-bold my-4">Most liked food</h1>
+        <div class="scrool-arrows flex space-x-2 items-center text-white">
+            <button class="next bg-slate-300 bg-opacity-40 flex items-center justify-center rounded-full w-10 h-10 hover:bg-slate-600" id="scroll-prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="prev bg-slate-300 bg-opacity-40 flex items-center justify-center rounded-full w-10 h-10 hover:bg-slate-600" id="scroll-next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+                        
+    <div id="food-carousel-item" class="food-caroussel-item overflow-x-hidden px-4 py-8 space-x-4  w-[80%] flex w-full justify-start space-x-2 scroll-smooth" data-carousel="slide" id="product-caroussel">
+        <!-- KOKI PLANTAIN MUR -->
+        {% include 'restaurants/partials/food-item.html' with name='Koki-plantain-mur' note='4.1' food_url='images/koki_plantain_mur.jpg'%}
+         <!-- Taro -->
+        {% include 'restaurants/partials/food-item.html' with name='Taro sauce jaune' note='4.1' food_url='images/taro_sauce_jaune.jpg'%}
+        <!-- WATAFUFU AND ERU -->
+        {% include 'restaurants/partials/food-item.html' with name='Watafufu and eru' note='4.1' food_url='images/watafufu-eru.jpg'%}
+        <!-- POISSON BRAISE -->
+        {% include 'restaurants/partials/food-item.html' with name='Poisson Braisé' note='4.1' food_url='images/poisson_braise.jpeg'%}
+        <!-- NDOLE PLANTAIN MUR -->
+        {% include 'restaurants/partials/food-item.html' with name='Ndole plantain mur' note='4.1' food_url='images/ndole_plantain.jpeg'%}
+        <!-- KOKI PLANTAIN MUR -->
+        {% include 'restaurants/partials/food-item.html' with name='Koki-plantain-mur' note='4.1' food_url='images/koki_plantain_mur.jpg'%}  
+    </div>
+</section>
+
+<script>
+    const carousel = document.querySelector('#food-carousel-item');
+    const nextButton = document.getElementById("scroll-next");
+    const prevButton = document.getElementById("scroll-prev");
+    
+    
+    
+    nextButton.addEventListener('click', () => {
+        carousel.scrollLeft += carousel.offsetWidth;
+    });
+
+    prevButton.addEventListener('click', () => {
+        carousel.scrollLeft -= carousel.offsetWidth;
+    });
+
+    const  checkScrollEnd =()=> {
+        const maxScrollLeft = carousel.scrollWidth - carousel.offsetWidth;
+        if (carousel.scrollLeft === maxScrollLeft){
+            nextButton.style.cursor = 'not-allowed';
+            nextButton.disabled = true;
+            nextButton.classList.remove('hover:bg-slate-600')
+        }
+        else{
+            nextButton.disabled = false;
+            nextButton.style.cursor = 'pointer';
+            nextButton.classList.add('hover:bg-slate-600')
+        }
+            
+        if (carousel.scrollLeft === 0){
+            prevButton.disabled = true;
+            prevButton.style.cursor = 'not-allowed';
+            prevButton.classList.remove('hover:bg-slate-600')
+        }
+            
+        else {
+            prevButton.disabled = false;
+            prevButton.style.cursor = 'pointer';
+            prevButton.classList.add('hover:bg-slate-600')
+        }
+            
+    }
+    setInterval(() => {
+        checkScrollEnd()
+    }, 0);
+    
+</script>
