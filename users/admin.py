@@ -1,7 +1,7 @@
 from django.contrib import admin
 from users.models import User, Profile
 from menu.models import Category, Dish
-from restaurants.models import Restaurant
+from restaurants.models import Restaurant , RestaurantDomain
 from orders.models import Order, Cart
 from reviews.models import Review
 # Register your models here.
@@ -17,7 +17,7 @@ class CategoryAdmin(admin.ModelAdmin) :
     list_display = ['name']
 
 class DishAdmin(admin.ModelAdmin) :
-    list_display = ['restaurant','category','name','price','slug']
+    list_display = ['restaurant','name','price','slug']
 
 class OrderAdmin(admin.ModelAdmin) :
     list_display = ['user','quantity','ordered','status']
@@ -32,6 +32,9 @@ class ReviewAdmin(admin.ModelAdmin) :
 class RestaurantAdmin(admin.ModelAdmin) :
     list_display = ['name','address','description','phone_number']
 
+class RestaurantsDomainAdmin(admin.ModelAdmin) :
+    list_display = ['name']
+
 
 admin.site.register(User,UserAdmin)
 admin.site.register(Profile,ProfileAdmin)
@@ -41,3 +44,4 @@ admin.site.register(Order,OrderAdmin)
 admin.site.register(Cart,CartAdmin)
 admin.site.register(Review,ReviewAdmin)
 admin.site.register(Restaurant,RestaurantAdmin)
+admin.site.register(RestaurantDomain,RestaurantsDomainAdmin)

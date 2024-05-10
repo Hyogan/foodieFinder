@@ -1,0 +1,44 @@
+from django.shortcuts import render
+from .models import Restaurant, Dish
+
+def search(request):
+    query = request.GET.get('q')
+    restaurants = Restaurant.objects.filter(name__icontains=query)
+    dishes = Dish.objects.filter(name__icontains=query)
+    # Combine the results into a single list
+    search_results = list(restaurants) + list(dishes)
+    return render(request, 'search_results.html', {'search_results': search_results})
+
+
+
+
+    <!-- search_results.html -->
+<h2>Search Results</h2>
+<ul>
+{% for result in search_results %}
+    <li>{{ result.name }}</li>
+    <!-- Add more details or links as needed -->
+{% endfor %}
+</ul>
+
+
+
+from django.urls import path
+from .views import search
+
+urlpatterns = [
+    path('search/', search, name='search'),
+]
+
+
+
+from django.urls import path
+from .views import search
+
+urlpatterns = [
+    path('search/', search, name='search'),
+]
+
+<!-- Include the search form wherever needed -->
+{% include 'search_form.html' %}
+

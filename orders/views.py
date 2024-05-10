@@ -11,32 +11,49 @@ def index(request) :
 
 
 
-def add_to_cart(request,slug) :
-    user = request.user
-    product = get_object_or_404(Dish,slug=slug)
-    if product.stock > 0 :
-        cart, _ = Cart.objects.get_or_create(user=user)
-        order, is_created = Order.objects.get_or_create(user=user,ordered=False,product=product)
-        if is_created :
-            cart.orders.add(order)
-            cart.save()
-        else :
-            order.quantity += 1
-            order.save()
+def add_to_cart(request, dish_id):
+    dish = Dish.objects.get(id=dish_id)
+    cart, created = Cart.objects.get_or_create(user=request.user)
+    order, created = Order.objects.get_or_create(user=request.user, items=dish, ordered=False)
+    order.quantity += 1
+    order.save()
+    cart.orders.add(order)
+    return redirect('cart')
 
-    return redirect(reverse("core:index",kwargs={"slug" : slug}))
+def remove_from_cart(request, order_id):
+    order = Order.objects.get(id=order_id)
+    cart = Cart.objects.get(user=request.user)
+    cart.orders.remove(order)
+    order.delete()
+    return redirect('cart')
 
-def cart(request) :
-    cart = get_object_or_404(Cart, user=request.user)
-    return render(request,'order/cart.html',context={"orders" : cart.orders.all()})
+def cart(request):
+    cart = Cart.objects.get(user=request.user)
+    orders = cart.orders.all()
+    return render(request, 'orders/cart.html', {'orders': orders, 'cart': cart})
 
+# def order_checkout(request):
+#     cart = Cart.objects.get(user=request.user)
+#     orders = cart.orders.filter(ordered=False)
+    
+#     if request.method == 'POST':
+#         form = OrderForm(request.POST)
+#         if form.is_valid():
+#             # Process the form and create the final order
+#             # Set the 'ordered' and 'ordered_date' fields for each order in the cart
+#             for order in orders:
+#                 order.ordered = True
+#                 order.ordered_date = timezone.now()
+#                 order.save()
+            
+#             # Clear the cart
+#             cart.orders.clear()
+            
+#             return redirect('order_confirmation')
+#     else:
+#         form = OrderForm()
+    
+#     return render(request, 'orders/checkout.html', {'form': form, 'cart': cart, 'orders': orders})
 
-def delete_cart(request) :
-    pass
-    cart = request.user.cart
-    # if cart := request.user.cart 
-    if cart :
-        cart.delete()
-
-    return redirect('core:index')
-
+def order_confirmation(request):
+    return render(request, 'orders/confirmation.html')

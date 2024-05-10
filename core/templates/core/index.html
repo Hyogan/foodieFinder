@@ -15,9 +15,15 @@
                 <li class="font-bold mx-4 ">
                     <a  href="{% url 'index' %}">Home</a>
                 </li>
-                <li class="font-bold mx-4 ">
-                    <a  href="/#contact">Contact us</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="font-bold mx-4 ">
+                        <a  href="{% url 'feed_index' %}">Product</a>
+                    </li>
+                {% else %}
+                    <li class="font-bold mx-4 ">
+                        <a  href="{% url 'index' %}#contact">Contact us</a>
+                    </li>
+                {% endif%}
                 <li class="font-bold mx-4 ">
                     <a  href="#">About us</a>
                 </li>
@@ -65,9 +71,15 @@
                 <li class="font-bold mx-4 ">
                     <a  href="{% url 'index' %}">Home</a>
                 </li>
-                <li class="font-bold mx-4 ">
-                    <a  href="{% url 'index' %}#contact">Contact us</a>
-                </li>
+                {% if user.is_authenticated %}
+                    <li class="font-bold mx-4 ">
+                        <a  href="{% url 'feed_index' %}">Product</a>
+                    </li>
+                {% else %}
+                    <li class="font-bold mx-4 ">
+                        <a  href="{% url 'index' %}#contact">Contact us</a>
+                    </li>
+                {% endif%}
                 <li class="font-bold mx-4 ">
                     <a  href="#">About us</a>
                 </li>

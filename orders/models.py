@@ -1,3 +1,4 @@
+from datetime import timezone
 from django.db import models
 from users.models import User
 from menu.models import Dish
@@ -8,7 +9,7 @@ from foodieFinder.settings import AUTH_USER_MODEL
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    items = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    items = models.ForeignKey(Dish, on_delete=models.CASCADE,related_name='items')
     quantity =  models.IntegerField()
     ordered = models.BooleanField(default=False)
     ordered_date = models.DateTimeField(blank=True,null=True)

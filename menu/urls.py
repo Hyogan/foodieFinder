@@ -4,4 +4,5 @@ from django.urls import path, include
 from . import views
 urlpatterns = [
     path('',views.index, name='index'),
+    path('dishes/create',views.create_dish,name='dish.create')
 ]

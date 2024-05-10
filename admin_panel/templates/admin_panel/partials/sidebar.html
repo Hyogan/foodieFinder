@@ -3,7 +3,7 @@
     <sidebar class="fixed bg-orange-400 text-white font-inter left-0 top-0 w-64 h-full bg-[#f8f4f3] p-4 z-50 sidebar-menu transition-transform">
         <a href="#" class="flex items-center pb-4 border-b border-b-gray-800">
 
-            <h2 class="font-bold text-2xl">LOREM <span class="bg-[#f84525] text-white px-2 rounded-md">IPSUM</span></h2>
+            <h2 class="font-bold text-2xl"> <span class="bg-[#f84525] text-white px-2 rounded-md">{{user.restaurant.name}}</span></h2>
         </a>
         <ul class="mt-4">
             <span class="text-black font-bold">ADMIN</span>
@@ -20,9 +20,10 @@
                 </a>
             </li>
             <li class="mb-1 group">
-                <a href="{% url 'admin.users'%}" class="flex font-semibold items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                <a href="{% url 'admin.users'%}" class="flex font-semibold items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100 {% if activated_block == 'users' %}bg-red-500{% endif %}">
                     <i class='bx bx-user mr-3 text-lg'></i>                
                     <span class="text-sm">Users</span>
+                    
                 </a>
             </li>
             <span class="text-black font-bold">ORDERS</span>
@@ -59,6 +60,13 @@
                     <i class='bx bx-envelope mr-3 text-lg' ></i>                
                     <span class="text-sm">Messages</span>
                     <span class=" md:block px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-600 bg-green-200 rounded-full">2 New</span>
+                </a>
+            </li>
+
+            <li class="mb-1 group">
+                <a href="{% url 'user.logout' %}" class="flex font-semibold items-center py-2 px-4 text-white hover:bg-gray-950 hover:text-gray-100 rounded-md group-[.active]:bg-gray-800 group-[.active]:text-white group-[.selected]:bg-gray-950 group-[.selected]:text-gray-100">
+                    <i class='bx bx-arrow-to-right mr-3 text-lg'></i>                
+                    <span class="text-sm">Logout</span>
                 </a>
             </li>
         </ul>

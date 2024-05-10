@@ -17,7 +17,11 @@ def register_view(request) :
     if(request.method == "POST") :
         form = UserRegisterForm(request.POST or None)
         if form.is_valid() :
-            new_user = form.save()
+            new_user = form.save(commit=False)
+            new_user.role = "standard" 
+            a_restaurant = get_object_or_404(Restaurant,pk=1)
+            new_user.restaurant = a_restaurant # Set the role to "standard"
+            new_user.save()
             username = form.cleaned_data.get("username")
             messages.success(request, f"Hey, {username} your account was created successfully") 
             new_user = authenticate(username=form.cleaned_data['email'],
@@ -52,7 +56,7 @@ def authenticate_view(request) :
 
         if user is not None :
             login(request, user)
-            messages.success(request, f"you have been successfully logged in > Bon appetit")
+            # messages.success(request, f"you have been successfully logged in > Bon appetit")
             return redirect("index")
 
         else :

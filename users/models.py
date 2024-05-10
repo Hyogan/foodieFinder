@@ -7,7 +7,7 @@ class User(AbstractUser) :
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=128)
     role = models.CharField(max_length=128,default='standard')
-    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)    
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE,null=True)    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
 
