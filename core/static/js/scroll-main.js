@@ -42,3 +42,4 @@ function initializeCarousel(carouselId, nextButtonId, prevButtonId) {
   // Usage example:
   initializeCarousel('food-carousel-item', 'food-scroll-next', 'food-scroll-prev');
   initializeCarousel('restaurants-carousel-item', 'restaurant-scroll-next', 'restaurant-scroll-prev');
+  initializeCarousel('restaurants-all-carousel-item', 'restaurant-all-scroll-next', 'restaurant-all-scroll-prev');

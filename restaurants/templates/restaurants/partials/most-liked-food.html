@@ -1,5 +1,5 @@
 {% load static %}
-<section id="most-liked-food" class="most-liked-food flex flex-col items-center w-full px-8">
+<section id="most-liked-food" class="most-liked-food flex flex-col items-center w-full mt-4 sm:px-8">
     <div class="title-scroll-arrows flex items-center  justify-between px-4 w-full  bg-orange-500 my-400">
         <h1 class="text-2xl  text-white font-bold my-4">Most liked food</h1>
         <div class="scrool-arrows flex space-x-2 items-center text-white">
@@ -8,19 +8,24 @@
         </div>
     </div>
                         
-    <div id="food-carousel-item" class="food-caroussel-item overflow-x-hidden px-4 py-8 space-x-4  w-[80%] flex w-full justify-start space-x-2 scroll-smooth" data-carousel="slide" id="product-caroussel">
+    <div id="food-carousel-item" class="food-caroussel-item overflow-x-hidden px-4 py-8 space-x-4  w-full sm:w-[80%] flex w-full justify-start space-x-2 scroll-smooth" data-carousel="slide" id="product-caroussel">
+       {% for dish in menu %}
+
+            {% include 'restaurants/partials/food-item.html' with dish=dish %}
+
+       {% endfor %}
         <!-- KOKI PLANTAIN MUR -->
-        {% include 'restaurants/partials/food-item.html' with name='Koki-plantain-mur' note='4.1' food_url='images/koki_plantain_mur.jpg'%}
+        <!-- {% include 'restaurants/partials/food-item.html' with name='Koki-plantain-mur' note='4.1' food_url='images/koki_plantain_mur.jpg'%} -->
          <!-- Taro -->
-        {% include 'restaurants/partials/food-item.html' with name='Taro sauce jaune' note='4.1' food_url='images/taro_sauce_jaune.jpg'%}
+        <!-- {% include 'restaurants/partials/food-item.html' with name='Taro sauce jaune' note='4.1' food_url='images/taro_sauce_jaune.jpg'%} -->
         <!-- WATAFUFU AND ERU -->
-        {% include 'restaurants/partials/food-item.html' with name='Watafufu and eru' note='4.1' food_url='images/watafufu-eru.jpg'%}
+        <!-- {% include 'restaurants/partials/food-item.html' with name='Watafufu and eru' note='4.1' food_url='images/watafufu-eru.jpg'%} -->
         <!-- POISSON BRAISE -->
-        {% include 'restaurants/partials/food-item.html' with name='Poisson Braisé' note='4.1' food_url='images/poisson_braise.jpeg'%}
+        <!-- {% include 'restaurants/partials/food-item.html' with name='Poisson Braisé' note='4.1' food_url='images/poisson_braise.jpeg'%} -->
         <!-- NDOLE PLANTAIN MUR -->
-        {% include 'restaurants/partials/food-item.html' with name='Ndole plantain mur' note='4.1' food_url='images/ndole_plantain.jpeg'%}
+        <!-- {% include 'restaurants/partials/food-item.html' with name='Ndole plantain mur' note='4.1' food_url='images/ndole_plantain.jpeg'%} -->
         <!-- KOKI PLANTAIN MUR -->
-        {% include 'restaurants/partials/food-item.html' with name='Koki-plantain-mur' note='4.1' food_url='images/koki_plantain_mur.jpg'%}  
+        <!-- {% include 'restaurants/partials/food-item.html' with name='Koki-plantain-mur' note='4.1' food_url='images/koki_plantain_mur.jpg'%}   -->
     </div>
 </section>
 

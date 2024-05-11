@@ -19,6 +19,9 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from . import settings
 
+handler404 = 'core.views.handler404'
+handler500 = 'core.views.handler500'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('core.urls')),
@@ -30,3 +33,5 @@ urlpatterns = [
     path('',include('payments.urls')),
     path('restaurants/administration/',include('admin_panel.urls')),
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+

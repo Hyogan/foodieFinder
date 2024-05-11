@@ -10,7 +10,7 @@ from menu.models import Dish
 def index(request) :
     user = request.user
     restaurant = get_object_or_404(Restaurant, pk=user.restaurant.id)
-    orders_count = Order.objects.filter(items__restaurant=restaurant).count()
+    orders_count = Order.objects.filter(item__restaurant=restaurant).count()
     dishes_count = restaurant.dish_set.count()
     # activities_count = restaurant.activities.count()
     activities_count = 10

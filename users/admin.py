@@ -20,7 +20,7 @@ class DishAdmin(admin.ModelAdmin) :
     list_display = ['restaurant','name','price','slug']
 
 class OrderAdmin(admin.ModelAdmin) :
-    list_display = ['user','quantity','ordered','status']
+    list_display = ['item','quantity','ordered','status']
 
 class CartAdmin(admin.ModelAdmin) :
     list_display = ['user']

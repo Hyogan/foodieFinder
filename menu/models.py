@@ -1,5 +1,6 @@
 from django.db import models
 from restaurants.models import Restaurant
+from django.urls import reverse
 # Create your models here.
 
 
@@ -22,6 +23,9 @@ class Dish(models.Model):
     thumbnail = models.ImageField(upload_to="media/dishes",blank=False,null=False)
     note = models.IntegerField(default=0)
     number_of_review = models.IntegerField(default=0)
+
+    def get_absolute_url(self) :
+        return reverse("add_to_cart",kwargs={"slug" : self.slug})
     
     class Meta :
         verbose_name_plural = 'Dishes'

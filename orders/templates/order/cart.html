@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header_content %}
+    <title>
+        FoodieFinder
+    </title> 
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+{% endblock %}
+
+{% block body_content %}
+{% include 'restaurants/partials/header.html' %}
+
+    <main class="w-full sm:w-[90vw] overflow-hidden mx-auto flex flex-col justify-center items-center">
+       
+        <section class="food py-4 flex flex-col w-full items-center gap-6 justify-around mb-8 bg-gray-300 px-20 mt-4">
+           <div class="articles-list px-8 flex flex-col items-center">
+                {% for order in orders %}
+                    <article class="justify-between w-fit mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
+                        <img src="{{order.item.thumbnail.url}}" alt="{{order.item.name}}" class="w-full rounded-lg sm:w-44" />
+                        <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                            <div class="mt-5 sm:mt-0">
+                            <h2 class="text-lg font-bold text-gray-900">{{order.item.name}}</h2>
+                            <p class="mt-1 text-xm text-gray-700">{{order.status}}</p>
+                            </div>
+                            <div class="mt-4 flex flex-col justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                                
+                                <!-- UPDATE ORDER QUANTITY IN A CART -->
+                                <form action="{% url 'update_cart' order.id %}" class="flex flex-col mx-4 mt-4" method="POST">
+                                    {% csrf_token %}
+                                    <input type="number" name="quantity" class="border-b-2 border-orange-400 pl-4" value="{{ order.quantity }}" min="1">
+                                    <button type="submit" class="text-white bg-orange-500 px-4 py-2 w-fit mt-2 border-none font-bold hover:bg-orange-700">Update</button>
+                                </form>
+                                <div class="flex items-center space-x-4">
+                                    <p class="text-md mt-4 font-bold">{{order.item.price}} FCFA</p>
+                                    <form action="{% url 'order.remove' order.id %}">
+                                        <button type="submit">
+                                            <svg class="font-bold" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+           </div>
+           <div class="mt-6 h-full w-[90%] min-w-[280px] rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-2/3 sm:w-1/3">
+                <div class="mb-2 flex justify-between">
+                    <p class="text-gray-700">price</p>
+                    <p class="text-gray-700">{{ total_price }}</p>
+                </div>
+                <div class="flex justify-between">
+                    <p class="text-gray-700">Total Product</p>
+                    <p class="text-gray-700">{{ count_el }}</p>
+                </div>
+                <hr class="my-4" />
+                <div class="flex justify-between">
+                    <p class="text-lg font-bold">Total</p>
+                    <div class="">
+                        <p class="mb-1 text-lg font-bold">{{ total_price }}FCFA</p>
+                        <p class="text-sm text-gray-700">including VAT</p>
+                    </div>
+                </div>
+                <div class="links flex flex-col">
+                    <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
+                    <span class="mt-2">Or, <a href="{% url 'feed_index' %}" class="text-orange-500 hover:underline">Continue Shoping <i class="fa-solid fa-arrow-right"></i></a> </span>
+                </div>
+            </div>
+
+        </section>
+    </main>
+<footer class="w-full bg-[#433e3d] py-4 px-6 flex flex-col font-serif">
+    <section class="footer-content gap-y-4 sm:gap-y-0 w-full bg-blue-400 py-8 flex flex-wrap justify-around items-start sm:items-center">
+        <section class="newsletter flex flex-col space-y-2">
+            <h2 class="font-bold flex items-center text-3xl text-white">Suscribe <span class="text-sm">Get the latest update and offers</span></h2>
+            <form action="" class="flex space-x-2 flex-wrap">
+                <input type="email" name="email" placeholder="Email" class="font-bold h-10 px-6 py-4 sm:min-w-80 sm:min-w-[300px] uppercase rounded-full">
+                <button type="submit" class="bg-orange-400 text-white font-bold h-10 flex items-center justify-center px-6 uppercase rounded-full hover:bg-orange-700 transition duration-700">Suscribe</button>
+            </form>
+        </section>
+        <section class="follow-us flex flex-col space-y-2">
+            <h2 class="font-bold text-3xl text-white">Follow us</h2>
+            <ul class="flex space-x-2"> 
+                <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-instagram"></i></li>
+                <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-x-twitter"></i></li>
+                <li class="bg-slate-600 hover:bg-slate-900 font-bold text-lg text-center w-10 text-white h-10 flex justify-center items-center  rounded-full cursor-pointer"><i class="fa-brands fa-google-plus-g"></i></li>
+            </ul>
+        </section>
+        <section class="contact-us-footer flex flex-col space-y-2">
+            <h2 class="font-bold text-3xl text-white">Contact us</h2>
+            <div class="content text-slate-700 font-bold">
+                <i class="fa-solid fa-phone"></i>
+                <span>(237) 651858890</span>
+            </div>
+        </section>
+    </section>
+    <section class="copyright w-full font-bold text-center text-white mt-4 border-t-4 py-4 ">
+        Copyright © 2024 FoodieFinder - Nelson Tiagho,  All rights reserved
+    </section>
+</footer>
+    
+
+
+
+
+    <script>
+        document.querySelector("body").classList.add('overflow-x-hidden')
+        document.querySelector("body").classList.add("relative")
+    </script>
+
+
+    <script src="{% static 'js/script.js' %}"></script>     
+{% endblock %}

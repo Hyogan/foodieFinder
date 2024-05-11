@@ -1,5 +1,5 @@
 {% load static %}
-<section id="most-liked-restaurants" class="most-liked-food flex flex-col items-center w-full px-8">
+<section id="most-liked-restaurants" class="most-liked-restaurants mt-4  flex flex-col items-center w-full sm:px-8">
     <div class="title-scroll-arrows flex items-center  justify-between px-4 w-full  bg-orange-500 my-400">
         <h1 class="text-2xl  text-white font-bold my-4">Most liked restaurants</h1>
         <div class="scrool-arrows flex space-x-2 items-center text-white">
@@ -8,9 +8,9 @@
         </div>
     </div>
                         
-    <div id="restaurants-carousel-item" class="food-caroussel-item overflow-x-hidden px-4 py-8 space-x-4  w-[80%] flex w-full justify-start space-x-2 scroll-smooth" data-carousel="slide" id="product-caroussel">
-        {% for restaurant in  most_liked_restaurants %}
-
+    <div id="restaurants-carousel-item" class="food-caroussel-item overflow-x-hidden px-4 py-8 space-x-4  w-full sm:w-[80%] flex w-full justify-start space-x-2 scroll-smooth" data-carousel="slide" id="product-caroussel">
+        {% for restaurant in  restaurants %}
+        
             {% include 'restaurants/partials/restaurant-item.html' with restaurant=restaurant %}
 
         {% endfor%}

@@ -8,9 +8,9 @@ from foodieFinder.settings import AUTH_USER_MODEL
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    items = models.ForeignKey(Dish, on_delete=models.CASCADE,related_name='items')
-    quantity =  models.IntegerField()
+    user = models.ForeignKey(AUTH_USER_MODEL,on_delete=models.CASCADE,default=1)
+    item = models.ForeignKey(Dish, on_delete=models.CASCADE,related_name='item')
+    quantity =  models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)
     ordered_date = models.DateTimeField(blank=True,null=True)
     STATUS_CHOICES = (
@@ -23,7 +23,7 @@ class Order(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
 
     def __str__(self):
-        return f"Order {self.pk} by {self.user.username}"
+        return f"Order {self.item.name} ({self.quantity})"
     
 
 

@@ -1,16 +1,19 @@
 {% load static %}
 <article class=" flex flex-col">
     <div class="flex min-w-80 rounded-xl min-h-40 max-h-40 rounded-t-3xl relative">
-        <img src="{% static food_url %}" class="rounded-t-3xl rounded-b-3xl w-full h-full absolute top-0 left-0 " alt="Taro sauce jaune">
+        
+        <img src="{{dish.thumbnail.url}}" class="rounded-t-3xl rounded-b-3xl w-full h-full absolute top-0 left-0 " alt="Taro sauce jaune">
         <div class="shadow-block w-full h-full bg-gradient-to-r opacity-0  from-slate-200 via-slate-400 to-slate-950 absolute top-0 left-0"></div>
-        <button class="order-now z-10 flex text-center absolute left-2 bottom-4 bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black transition duration-700">Order now</button>
+        <a href="{{ dish.get_absolute_url }}" class="order-now z-10 flex text-center absolute left-2 bottom-4 bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black transition duration-700">
+            Order now
+        </a>
     </div>
     <div class="flex px-2 justify-between pt-2 shadow-xl rounded-b-3xl">
         <p class="text-black flex flex-col">
-            <span class="font-bold text-xl">{{name}}</span>
+            <span class="font-bold text-xl">{{dish.name}}</span>
             <span></span>
         </p>
-        <span class="note font-bold">{{note}}</span>
+        <span class="note font-bold">{{dish.note}}</span>
     </div>
 </article>
 

@@ -60,7 +60,10 @@
                 </li>
                 {% endif %}
                 {% if user.cart %}
-                    <a class="text-xl mx-4 text-white underline font-bold hover:bg-white hover:text-blue-500 px-4 py-6" href="{% url 'cart'%}">Panier ({{user.cart.orders.count}})</a>
+                    <a href="{% url 'cart' %}" class="bg-slate-300 mx-4 bg-opacity-40 flex items-center justify-center rounded-full w-10 h-10 hover:bg-slate-600 relative transition duration-700">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="flex items-center justify-center bg-green-400 rounded-full w-6 h-6 absolute -top-1 -right-1">{{user.cart.orders.count}}</span>
+                    </a>
                 {% endif %}
             </ul>
         

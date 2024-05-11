@@ -12,7 +12,7 @@
 
     <main class="w-[90vw] mx-auto flex flex-col  justify-center items-center">
         <div class="overflow-hidden h-80 rounded-t-3xl rounded-b-3xl mt-4 z-9999">
-            <img src="{% static 'images/restaurants/cafe-tribeca.jpeg' %}" class="object-center" alt="">
+            <img src="{{restaurant.thumbnail.url}}" class="object-center" alt="{{restaurant.name}}">
             <!-- <img src="{% static 'images/restaurants/cafe-tribeca.jpeg' %}" class="absolute bottom-6 border-2 border-white left-6 w-20 h-20 rounded-full" alt=""> -->
         </div>
         <section class="general-infos-localisationcontainer mx-auto p-4">
@@ -21,19 +21,19 @@
                 <div class="">
                     <!-- Restaurant Name -->
                      <!-- Restaurant Description -->
-                     <text class="text-6xl">{{ land }}</text>
-                    <h2 class="title self-left text-left w-full ml-2 font-bold text-4xl">Benvenuto Cafe - Tribeca</h2>
+                     <!-- <text class="text-6xl">{{ land }}</text> -->
+                    <h2 class="title self-left text-left w-full ml-2 font-bold text-4xl">{{restaurant.name}}</h2>
                     <p class="caracteristics">4.8(7,390+) • 0.5 mi • Sandwiches • American • Healthy • Group Friendly • $ • Info</p>
-                    <p class="description">Benvenuto Cafe, located in the Tribeca neighborhood of Manhattan, is a popular American restaurant known for its bistro fare and extensive beer menu. Customers praise the use of local ingredients and rave about... More</p>
+                    <p class="description">Benvenuto Cafe, {{restaurant.description}}</p>
         
                   
                     <!-- Restaurant Categories -->
                     <div class="mt-4">
                         <h2 class="text-lg font-semibold">Categories</h2>
                         <ul class="list-disc ml-6">
-                            <li>Italian</li>
-                            <li>Cafe</li>
-                            <li>Breakfast</li>
+                            {% for domain in domains %}
+                                <li>{{ domain.name }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
         
@@ -81,30 +81,53 @@
                     <!-- Restaurant Location -->
                     <div>
                         <h2 class="text-lg font-semibold">Location</h2>
-                        <p>123 Main Street, Tribeca, New York</p>
+                        <p>{{restaurant.address}}</p>
+                        <!-- <p>123 Main Street, Tribeca, New York</p> -->
                     </div>
         
                     <!-- Restaurant Opening Hours -->
                     <div class="mt-4">
                         <h2 class="text-lg font-semibold">Opening Hours</h2>
-                        <p>Monday to Friday: 8am - 10pm</p>
-                        <p>Saturday and Sunday: 9am - 11pm</p>
+                        <p>Monday to Friday: {{restaurant.opening_hours}} Hours</p>
+                        <p>Saturday and Sunday: {{restaurant.opening_hours_weekend}} Hours</p>
                     </div>
         
                     <!-- Restaurant Delivery Time -->
                     <div class="mt-4">
                         <h2 class="text-lg font-semibold">Delivery Time</h2>
-                        <p>Estimated delivery time: 30-45 minutes</p>
+                        <p>Estimated delivery time: {{restaurant.delivery_time}} minutes</p>
                     </div>
                 </div>
             </div>
         </section>
         <section class="food flex flex-wrap w-full gap-6 justify-around mb-8">
+            {% for dish in dishes %}
+                <article class="flex flex-col">
+                    <div class="flex min-w-80 rounded-xl min-h-40 max-h-40 rounded-t-3xl relative">
+                        <img src="{{dish.thumbnail.url}}" class="rounded-t-3xl rounded-b-3xl w-full h-full absolute top-0 left-0 " alt="{{dish.name}}">
+                        <div class="shadow-block w-full h-full bg-gradient-to-r opacity-0  from-slate-200 via-slate-400 to-slate-950 absolute top-0 left-0"></div>
+                        <button class="order-now z-10 flex text-center absolute left-2 bottom-4 bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black transition duration-700">
+                            <a href="{{ dish.get_absolute_url }}">Add to cart</a>
+                        </button>    
+                    </div>
+                    <div class="flex px-2 justify-between pt-2 shadow-xl rounded-b-3xl">
+                        <p class="text-black flex flex-col">
+                            <span class="font-bold text-xl">{{dish.name}}</span>
+                            <span class="m-2 text-2xl font-bold text-orange-600">{{dish.price}} Fcfa</span>
+                        </p>
+                        <span class="note font-bold">4.4</span>
+                    </div>
+                </article>
+            {% endfor %}
+            
+            
             <article class="flex flex-col">
                 <div class="flex min-w-80 rounded-xl min-h-40 max-h-40 rounded-t-3xl relative">
-                    <img src="{% static 'images/taro_sauce_jaune.jpg' %}" class="rounded-t-3xl rounded-b-3xl w-full h-full absolute top-0 left-0 " alt="Taro sauce jaune">
+                <img src="{% static 'images/taro_sauce_jaune.jpg' %}" class="rounded-t-3xl rounded-b-3xl w-full h-full absolute top-0 left-0 " alt="Taro sauce jaune">
                     <div class="shadow-block w-full h-full bg-gradient-to-r opacity-0  from-slate-200 via-slate-400 to-slate-950 absolute top-0 left-0"></div>
-                    <button class="order-now z-10 flex text-center absolute left-2 bottom-4 bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black transition duration-700">Order now</button>
+                    <button class="order-now z-10 flex text-center absolute left-2 bottom-4 bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black transition duration-700">
+                        <a href="">Add to cart</a>
+                    </button>
                 </div>
                 <div class="flex px-2 justify-between pt-2 shadow-xl rounded-b-3xl">
                     <p class="text-black flex flex-col">
